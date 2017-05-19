@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using System.Text;
 
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
 {
@@ -16,7 +17,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 
     using (var client = new HttpClient())
     {
-        HttpResponseMessage response = await client.PutAsync("http://localhost", new StringContent("Test", System.Text.Encoding.UTF8, "application/json"));
+        HttpResponseMessage response = await client.PutAsync("http://localhost", new StringContent("Test", Encoding.UTF8, "application/json"));
     }
     // Set name to query string or body data
     name = name ?? data?.name;
